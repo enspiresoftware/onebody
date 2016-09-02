@@ -1,0 +1,30 @@
+default: &default
+  adapter: mysql2
+  host: 127.0.0.1
+  pool: 5
+  timeout: 5000
+  username: root
+  password: root
+
+development:
+  <<: *default
+  database: goodwill_development
+
+staging:
+  <<: *default
+  database: goodwill_staging
+
+  # Warning: The database defined as "test" will be erased and
+  # re-generated from your development database when you run "rake".
+  # Do not set this db to the same as development or production.
+test: &test
+  <<: *default
+  database: goodwill_test
+
+production:
+  <<: *default
+  database: goodwill_production
+
+
+cucumber:
+  <<: *test
